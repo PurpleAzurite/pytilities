@@ -40,6 +40,10 @@ import pyqrcode
 from pyqrcode import QRCode
 
 
+def print_usage():
+    print("Usage: python create_qr_code.py <url>")
+
+
 def generate_qrcode(url: str):
     qrc = pyqrcode.create(url)
     qrc.svg("qrcode.svg", scale=8)
@@ -47,6 +51,7 @@ def generate_qrcode(url: str):
 
 if __name__ == "__main__":
     if len(sys.argv) < 2:
+        print_usage()
         exit(0)
 
     generate_qrcode(sys.argv[1])
